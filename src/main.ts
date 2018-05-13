@@ -10,3 +10,13 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
+
+
+import { ApplicationRef } from "@angular/core";
+import { enableDebugTools } from "@angular/platform-browser";
+
+platformBrowserDynamic().bootstrapModule(AppModule).then((module) => {
+  let applicationRef = module.injector.get(ApplicationRef);
+  let appComponent = applicationRef.components[0];
+  enableDebugTools(appComponent);
+});
